@@ -21,6 +21,10 @@ line_list = file_object.readlines()
 #Close the file- because we've already opened and read it
 file_object.close()
 
+#Create two empty dictionary objects
+date_dict={}
+coord_dict={}
+
 #Iterate through all lines in the linelist
 #lineString = line_list[100] this is replaced by the below line
 for lineString in line_list[17:]:
@@ -41,3 +45,8 @@ for lineString in line_list[17:]:
     
     # Print the location of Sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}:{obs_long} on {obs_date}")
+#Adding items to the dictionary only if they are sufficient for obs_lc 1,2,3
+if obs_lc in ("1", "2", "3") :
+    print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}:{obs_long} on {obs_date}")
+    date_dict[record_id] = obs_date
+    coord_dict[record_id] = (obs_lat,obs_long)
