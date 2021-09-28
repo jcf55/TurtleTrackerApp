@@ -37,15 +37,17 @@ for lineString in line_list[17:]:
     #extract item and list them into variables
     record_id = lineData[0]
     obs_date = lineData[2]
-    
     #location class
     obs_lc = lineData[4]
+    #if Lc is not 1, 2, or 3
+    #if obs_lc not in ("1", "2", "3"):
+        #continue
     obs_lat = lineData[6]
     obs_long = lineData[7]
     
     # Print the location of Sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}:{obs_long} on {obs_date}")
-#Adding items to the dictionary only if they are sufficient for obs_lc 1,2,3
+#Adding items to the dictionary if lc is 1, 2, or 3
 if obs_lc in ("1", "2", "3") :
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat}:{obs_long} on {obs_date}")
     date_dict[record_id] = obs_date
