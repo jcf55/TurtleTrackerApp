@@ -9,7 +9,7 @@
 # Date:   Fall 2021
 #--------------------------------------------------------------
 #Ask user for search date
-user_date = input("Enter date to search for Sara: ")
+user_date = input("Enter date to search for Sara [M/DD/YYYY]: ")
 
 #Create a variable point to the data file
 file_name = './data/raw/sara.txt'
@@ -35,13 +35,13 @@ for lineString in line_list:
     lineData = lineString.split()
     
     #Extract the items in list into variables
-    record_id = lineData[0]  # ARGOS tracking record ID
-    obs_date = lineData[2]   # Observation date
-    obs_lc = lineData[4]      # Observation Location Class
+    record_id = lineData[0]  
+    obs_date = lineData[2]   
+    obs_lc = lineData[4]      
     #if obs_lc not in ("1","2","3"):
     #    continue
-    obs_lat = lineData[6]    # Observation Latitude
-    obs_lon = lineData[7]    # Observation Longitude
+    obs_lat = lineData[6]   
+    obs_lon = lineData[7]    
     
     #Print the location of sara
     if obs_lc in ("1","2","3"):
@@ -59,6 +59,13 @@ for date_item in date_dict.items():
     #See if the date matches the user date
     if the_date == user_date:
         matching_keys.append(the_key)
+        
+#if no records are found, tell the user
+
+if len(matching_keys) == 0:
+   print(f"No observations on {user_date}; is your date format valid?")
+        
+        
         
 #Reveal locations for each key in matching keys
 for matching_key in matching_keys:
